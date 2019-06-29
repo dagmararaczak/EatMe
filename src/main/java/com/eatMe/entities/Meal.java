@@ -18,7 +18,7 @@ public class Meal {
     private Menu menu;
 
     @OneToMany(mappedBy = "meal")
-    private List<Ingriedients> ingriedients;
+    private List<Ingredients> ingredients;
 
     private Meal() {
     }
@@ -39,11 +39,20 @@ public class Meal {
         this.price = price;
     }
 
-/*    public List<String> getIngriedients() {
-        return ingriedients;
+
+    public Menu getMenu() {
+        return menu;
     }
 
-    public void setIngriedients(List<String> ingriedients) {
-        this.ingriedients = ingriedients;
-    }*/
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    public List<Ingredients> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredients> ingredients) {
+        this.ingredients = ingredients;
+    }
 }

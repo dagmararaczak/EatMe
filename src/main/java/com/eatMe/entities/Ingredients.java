@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Ingriedients {
+public class Ingredients {
 
 
     @Id
@@ -17,6 +17,14 @@ public class Ingriedients {
     @ManyToOne
     Meal meal;
 
-    public Ingriedients() {
+    public Ingredients() {
+    }
+
+    public Meal getMeal() {
+        return meal;
+    }
+
+    public void setMeal(Meal meal) {
+        this.meal = meal;
     }
 }

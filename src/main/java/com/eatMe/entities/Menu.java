@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
 
 @Entity
 public class Menu {
@@ -18,26 +18,20 @@ public class Menu {
     @OneToMany(mappedBy = "menu")
     List<Meal> mealsList = new ArrayList<>();
 
-    
 
-   // Map<Meal,List<String>> menu;
 
     private Menu() {
     }
 
-   /* public List<Meal> getMealsList() {
+    public Long getId() {
+        return Id;
+    }
+
+    public List<Meal> getMealsList() {
         return mealsList;
     }
 
     public void setMealsList(List<Meal> mealsList) {
         this.mealsList = mealsList;
     }
-
-    public Map<Meal, List<String>> getMenu() {
-        return menu;
-    }
-
-    public void setMenu(Map<Meal, List<String>> menu) {
-        this.menu = menu;
-    }*/
 }

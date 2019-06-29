@@ -25,7 +25,7 @@ public class Restaurant {
     @Enumerated(EnumType.STRING)
     private Set<Cuisine> cuisine;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private Menu menu;
 
 
@@ -41,4 +41,47 @@ public class Restaurant {
     }
 
 
+    public Long getId() {
+        return Id;
+    }
+
+    public Double getMaxCost() {
+        return maxCost;
+    }
+
+    public void setMaxCost(Double maxCost) {
+        this.maxCost = maxCost;
+    }
+
+    public Double getMinCost() {
+        return minCost;
+    }
+
+    public void setMinCost(Double minCost) {
+        this.minCost = minCost;
+    }
+
+    public Set<MealType> getMealType() {
+        return mealType;
+    }
+
+    public void setMealType(Set<MealType> mealType) {
+        this.mealType = mealType;
+    }
+
+    public Set<Cuisine> getCuisine() {
+        return cuisine;
+    }
+
+    public void setCuisine(Set<Cuisine> cuisine) {
+        this.cuisine = cuisine;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
 }
