@@ -1,23 +1,30 @@
 package com.eatMe.entities;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Ingredients {
 
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String name;
 
     @ManyToOne
     Meal meal;
 
     public Ingredients() {
+    }
+
+    public Ingredients(String name) {
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Meal getMeal() {
@@ -26,5 +33,13 @@ public class Ingredients {
 
     public void setMeal(Meal meal) {
         this.meal = meal;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

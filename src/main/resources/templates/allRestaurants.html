@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:insert="fragments :: mainNavbar"></div>
+<div class="jumbotron text-center" style="background-color: beige">
+    <h1 style="font-family: fantasy" > Restaurants </h1>
+
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Restaurants:</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="restaurant: ${restaurants}" style="border: 1px black">
+                <td th:text="${restaurant.name}"></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div th:insert="fragments :: footer"></div>
+</body>
+</html>

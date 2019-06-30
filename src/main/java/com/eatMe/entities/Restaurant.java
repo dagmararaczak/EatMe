@@ -8,13 +8,14 @@ import java.util.Set;
 public class Restaurant {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long  Id;
 
     private String name;
 
+    @Column(nullable = true)
     private Double maxCost;
-
+    @Column(nullable = true)
     private Double minCost;
 
     @ElementCollection(targetClass = MealType.class)
