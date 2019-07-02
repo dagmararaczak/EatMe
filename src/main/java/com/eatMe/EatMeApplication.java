@@ -1,5 +1,6 @@
 package com.eatMe;
 
+import com.eatMe.entities.Cuisine;
 import com.eatMe.entities.Ingredients;
 import com.eatMe.repositories.IngredientsRepository;
 import com.eatMe.repositories.RestaurantRepository;
@@ -31,7 +32,13 @@ public class EatMeApplication implements CommandLineRunner {
 
 		restaurantService.getByCuisineType("ITALIAN");
 
-		restaurantRepository.findByName("VAFANAPOLI");
+		restaurantService.getByMoreCuisineType("ITALIAN");
+
+
+
+
+
+
 
 	}
 }
