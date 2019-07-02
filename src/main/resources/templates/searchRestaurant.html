@@ -14,10 +14,11 @@
 
     <div class="container">
         <form action="#" th:action="@{/search-restaurant}" th:object="${queryString}" method="post" >
+
             <div class="form-group">
-                Wyszukaj restauracje:
+                Wyszukaj restauracje: <br>
                 <label for="queryString">Cuisine</label>
-                <select name="queryString"  id="queryString" style="width: 100%">
+                <select name="${queryString.cuisine}"  id="queryString" style="width: 100%">
                     <option th:value="ITALIAN">ITALIAN</option>
                     <option th:value="GREEK">GREEK</option>
                     <option th:value="CHINESE">CHINESE</option>
@@ -25,6 +26,16 @@
                     <option th:value="POLAND">POLAND</option>
                     <option th:value="AMERICAN">AMERICAN</option>
                 </select>
+                <label for="meal">Meal</label>
+                <select name="${queryString.meal}"  id="meal" style="width: 100%">
+                    <option th:value="VEGETARIAN">VEGETARIAN</option>
+                    <option th:value="MEAT">MEAT</option>
+                    <option th:value="GLUTENFREE">GLUTENFREE</option>
+                    <option th:value="LACTOSEFREE">LACTOSEFREE</option>
+                </select>
+
+
+
 
 
 

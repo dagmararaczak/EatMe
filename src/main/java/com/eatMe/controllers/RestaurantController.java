@@ -57,7 +57,7 @@ public class RestaurantController {
     @PostMapping("search-restaurant")
     public String search(@ModelAttribute("queryString") QueryString queryString, Model model){
 
-        List<Restaurant> byCuisineType = restaurantService.getByCuisineType(queryString.getQueryString());
+        List<Restaurant> byCuisineType = restaurantService.getByCuisineType(queryString.getCuisine());
 
         model.addAttribute("restaurantbycuisine",byCuisineType);
 
@@ -72,14 +72,23 @@ public class RestaurantController {
 
         String queryString;
 
-        String[] cuisines;
+        String cuisine;
+        String meal;
 
-        public String[] getCuisines() {
-            return cuisines;
+        public String getMeal() {
+            return meal;
         }
 
-        public void setCuisines(String[] cuisines) {
-            this.cuisines = cuisines;
+        public void setMeal(String meal) {
+            this.meal = meal;
+        }
+
+        public String getCuisine() {
+            return cuisine;
+        }
+
+        public void setCuisine(String cuisine) {
+            this.cuisine = cuisine;
         }
 
         public QueryString() {
