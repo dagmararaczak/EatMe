@@ -1,6 +1,7 @@
 package com.eatMe.repositories;
 
 
+import com.eatMe.entities.Cuisine;
 import com.eatMe.entities.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -46,6 +47,15 @@ public class RestaurantRepository {
         String query1 = "select r from Restaurant r where r.name = :name ";
 
         Query query = em.createQuery( query1, Restaurant.class).setParameter("name",restaurantName);
+
+        return query.getResultList();
+
+    }
+
+
+    public List<Long> getEnums(){
+
+        Query query = em.createQuery("select c.restaurant_id from restaurant_cuisine  c ");
 
         return query.getResultList();
 

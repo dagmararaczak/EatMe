@@ -66,6 +66,7 @@ public class Restaurant {
         this.minCost = minCost;
     }
 
+
     public Set<Cuisine> getCuisine() {
         return cuisine;
     }

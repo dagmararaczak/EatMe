@@ -2,6 +2,7 @@ package com.eatMe.services;
 
 
 import com.eatMe.entities.Cuisine;
+import com.eatMe.entities.MealType;
 import com.eatMe.entities.Restaurant;
 import com.eatMe.repositories.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,55 @@ public class RestaurantService {
         return restaurantResult;
     }
 
+    public List<Restaurant> getByMealType(String mealName) {
 
+        List<Restaurant> restaurantResult = new ArrayList<>();
+
+        List<Restaurant> all = restaurantRepository.getAll();
+
+
+        for (Restaurant restaurant : all) {
+
+            for (MealType mealType : restaurant.getMealTypeEnum()) {
+
+                if (mealType.toString().equals(mealName)) {
+                    restaurantResult.add(restaurant);
+                }
+            }
+
+
+        }
+
+        return restaurantResult;
+    }
+
+    public Set<Restaurant> getByMoreMealTypes(String... mealName) {
+
+        Set<Restaurant> restaurantResult = new HashSet<>();
+
+        List<Restaurant> all = restaurantRepository.getAll();
+
+        List<Cuisine> cuisineToCheck = new ArrayList<>();
+
+
+        for (Restaurant restaurant : all) {
+            for (MealType mealType : restaurant.getMealTypeEnum()) {
+                for (String cuisineType : mealName) {
+                    if (mealType.toString().equals(mealName)) {
+                        restaurantResult.add(restaurant);
+                    }
+                }
+
+            }
+        }
+
+
+        return restaurantResult;
+    }
+
+    public List<Restaurant> findByName(String name){
+
+       return restaurantRepository.findByName(name);
+    }
 
 }
