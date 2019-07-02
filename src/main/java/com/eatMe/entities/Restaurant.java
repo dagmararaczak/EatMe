@@ -10,7 +10,7 @@ public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long  Id;
-
+    @Column(unique = true,nullable = false)
     private String name;
 
     @Column(nullable = true)
@@ -18,15 +18,15 @@ public class Restaurant {
     @Column(nullable = true)
     private Double minCost;
 
-    @ElementCollection(targetClass = MealType.class)
+    @ElementCollection(targetClass = MealType.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
-   private Set<MealType> mealType;
+   private Set<MealType> mealTypeEnum;
 
-    @ElementCollection(targetClass = Cuisine.class)
+    @ElementCollection(targetClass = Cuisine.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<Cuisine> cuisine;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     private Menu menu;
 
 
@@ -62,14 +62,6 @@ public class Restaurant {
         this.minCost = minCost;
     }
 
-    public Set<MealType> getMealType() {
-        return mealType;
-    }
-
-    public void setMealType(Set<MealType> mealType) {
-        this.mealType = mealType;
-    }
-
     public Set<Cuisine> getCuisine() {
         return cuisine;
     }
@@ -85,4 +77,10 @@ public class Restaurant {
     public void setMenu(Menu menu) {
         this.menu = menu;
     }
+
+    public Set<MealType> getMealTypeEnum() {
+        return mealTypeEnum;
+    }
+
+
 }

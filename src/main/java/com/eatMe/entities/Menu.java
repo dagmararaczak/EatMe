@@ -15,6 +15,8 @@ public class Menu {
     @OneToMany(mappedBy = "menu")
     List<Meal> mealsList = new ArrayList<>();
 
+    @OneToOne
+    Restaurant restaurant;
 
 
     private Menu() {

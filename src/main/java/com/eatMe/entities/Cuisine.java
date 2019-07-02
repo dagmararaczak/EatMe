@@ -2,10 +2,12 @@ package com.eatMe.entities;
 
 public enum Cuisine {
     ITALIAN,
-   GREEK,
-   CHINESE,
+    GREEK,
+    CHINESE,
     INDIAN,
     POLAND,
-   AMERICAN,
+    AMERICAN,
     GEORIAN
+
+
 }
