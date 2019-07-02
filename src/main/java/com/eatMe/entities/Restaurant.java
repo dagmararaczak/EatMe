@@ -18,12 +18,16 @@ public class Restaurant {
     @Column(nullable = true)
     private Double minCost;
 
-    @ElementCollection(targetClass = MealType.class, fetch = FetchType.EAGER)
+    @ElementCollection(targetClass = MealType.class,fetch = FetchType.EAGER)
+    @CollectionTable(name = "restaurant_meal", joinColumns = @JoinColumn(name = "restaurant_id"))
+    @Column(name = "meal_type", nullable = true)
     @Enumerated(EnumType.STRING)
    private Set<MealType> mealTypeEnum;
 
     @ElementCollection(targetClass = Cuisine.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "restaurant_cuisine", joinColumns = @JoinColumn(name = "restaurant_id"))
     @Enumerated(EnumType.STRING)
+    @Column(name = "cuisine", nullable = true)
     private Set<Cuisine> cuisine;
 
     @OneToOne(fetch = FetchType.EAGER)
