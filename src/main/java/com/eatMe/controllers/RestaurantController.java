@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class RestaurantController {
@@ -55,6 +56,7 @@ public class RestaurantController {
 
     @PostMapping("search-restaurant")
     public String search(@ModelAttribute("queryString") QueryString queryString, Model model){
+
         List<Restaurant> byCuisineType = restaurantService.getByCuisineType(queryString.getQueryString());
 
         model.addAttribute("restaurantbycuisine",byCuisineType);
@@ -64,19 +66,21 @@ public class RestaurantController {
         return "allRestaurants";
     }
 
-  /*  @PostMapping("/searchUserAction")
-    public String searchUserByName(@ModelAttribute("queryString") QueryString queryString,Model model){
-        List<UserDTO>foundUsers =  userService.findByQueryString(queryString.getQueryString());
-        model.addAttribute("allStudents", foundUsers);
-        model.addAttribute("newUser", new UserDTO());
-        model.addAttribute("queryString",new QueryString());
-
-        return "allUsersPage";*/
 
 
     public static class QueryString{
 
         String queryString;
+
+        String[] cuisines;
+
+        public String[] getCuisines() {
+            return cuisines;
+        }
+
+        public void setCuisines(String[] cuisines) {
+            this.cuisines = cuisines;
+        }
 
         public QueryString() {
         }

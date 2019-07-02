@@ -17,7 +17,17 @@
             <div class="form-group">
                 Wyszukaj restauracje:
                 <label for="queryString">Cuisine</label>
-                <input type="text" id="queryString" name="queryString">
+                <select name="queryString"  id="queryString" style="width: 100%">
+                    <option th:value="ITALIAN">ITALIAN</option>
+                    <option th:value="GREEK">GREEK</option>
+                    <option th:value="CHINESE">CHINESE</option>
+                    <option th:value="INDIAN">INDIAN</option>
+                    <option th:value="POLAND">POLAND</option>
+                    <option th:value="AMERICAN">AMERICAN</option>
+                </select>
+
+
+
 
                 <div class="form-group">
                     <input type="submit" value="Submit" class="btn" style="background-color: darkslategrey">

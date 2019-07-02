@@ -16,6 +16,8 @@ insert into Ingredients(name) values('makaron');
 insert into Ingredients(name) values('cukinia');
 insert into Ingredients(name) values('kaczka');
 
+insert into restaurant_cuisine(restaurant_id, cuisine) VALUES (1,'ITALIAN')
+
 
 
 
