@@ -8,10 +8,10 @@ insert into MEAL(name,PRICE,MENU_ID) values('SAŁATKA Z ORZECHAMI',18.99,1);
 
 
 insert into Ingredients(name,MEAL_ID) values('czosnek',1);
-insert into Ingredients(name) values('kurczak');
-insert into Ingredients(name) values('orzechy');
-insert into Ingredients(name) values('pomidor');
-insert into Ingredients(name) values('ryż');
+insert into Ingredients(name,MEAL_ID) values('kurczak',1);
+insert into Ingredients(name,MEAL_ID) values('orzechy',1);
+insert into Ingredients(name,MEAL_ID) values('pomidor',2);
+insert into Ingredients(name,MEAL_ID) values('ryż',2);
 insert into Ingredients(name) values('makaron');
 insert into Ingredients(name) values('cukinia');
 insert into Ingredients(name) values('kaczka');

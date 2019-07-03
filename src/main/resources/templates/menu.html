@@ -17,12 +17,21 @@
             <thead>
             <tr>
                 <th>Meal</th>
+                <th>Price</th>
+                <th>Ingredients</th>
 
             </tr>
             </thead>
             <tbody>
             <tr th:each="meal: ${menu}" style="border: 1px black">
                 <td th:text="${meal.name}"></td>
+                <td th:text="${meal.price}"></td>
+                <td>
+                    <div th:each="ingredient: ${meal.ingredients}" style="border: 1px black">
+                        <span th:text="${ingredient.name}"></span>
+                    </div>
+                </td>
+
 
             </tr>
             </tbody>
