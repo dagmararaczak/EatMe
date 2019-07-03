@@ -45,9 +45,19 @@ public class MealRepository {
 
     public Meal findByName(String name){
 
-        Query query = em.createQuery("select m from Meal where name = " + name, Meal.class);
+        Query query = em.createQuery("select m from Meal m where name =:name", Meal.class)
+                .setParameter("name",name);
 
         return (Meal) query.getResultList().get(0);
+
+    }
+
+    public List<Meal> findByIngredient(String ingredient){
+
+        Query query = em.createQuery("select m from Meal m join Ingredients i on i.meal_id = m.id where i.name =:ingredient", Meal.class)
+                .setParameter("ingredient",ingredient);
+//SELECT * FROM MEAL m join Ingredients i on i.meal_id = m.id where i.name ='czosnek'
+        return query.getResultList();
 
     }
 }

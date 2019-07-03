@@ -2,6 +2,7 @@ package com.eatMe.repositories;
 
 
 import com.eatMe.entities.Cuisine;
+import com.eatMe.entities.MealType;
 import com.eatMe.entities.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,7 +37,6 @@ public class RestaurantRepository {
     }
 
 
-
     public List<Restaurant> getAll(){
         Query query = em.createQuery("select r from Restaurant r", Restaurant.class);
         return query.getResultList();
@@ -52,10 +52,20 @@ public class RestaurantRepository {
 
     }
 
+//SELECT a FROM A a JOIN a.b b WHERE b.name = :name
 
-    public List<Long> getEnums(){
+    public List<Restaurant> getRestaurantByCuisine(String name){
 
-        Query query = em.createQuery("select c.restaurant_id from restaurant_cuisine  c ");
+        Query query = em.createQuery("select r from Restaurant r where :cuisineName MEMBER OF r.cuisine")
+                .setParameter("cuisineName", Cuisine.valueOf(name));
+
+        return query.getResultList();
+
+    }
+    public List<Restaurant> getRestaurantByMealType(String name){
+
+        Query query = em.createQuery("select r from Restaurant r where :mealcategory MEMBER OF r.mealType")
+                .setParameter("mealcategory", MealType.valueOf(name));
 
         return query.getResultList();
 

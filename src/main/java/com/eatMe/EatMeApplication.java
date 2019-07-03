@@ -1,8 +1,7 @@
 package com.eatMe;
 
-import com.eatMe.entities.Cuisine;
-import com.eatMe.entities.Ingredients;
 import com.eatMe.repositories.IngredientsRepository;
+import com.eatMe.repositories.MealRepository;
 import com.eatMe.repositories.RestaurantRepository;
 import com.eatMe.services.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +20,10 @@ public class EatMeApplication implements CommandLineRunner {
 	RestaurantRepository restaurantRepository;
 	@Autowired
 	RestaurantService restaurantService;
+	@Autowired
+	MealRepository repository;
+
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(EatMeApplication.class, args);
@@ -30,9 +33,10 @@ public class EatMeApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		restaurantService.getByCuisineType("ITALIAN");
 
-		restaurantService.getByMoreCuisineType("ITALIAN");
+
+		restaurantRepository.getRestaurantByMealType("VEGETARIAN");
+
 
 
 

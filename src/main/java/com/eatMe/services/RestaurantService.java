@@ -75,7 +75,7 @@ public class RestaurantService {
 
         for (Restaurant restaurant : all) {
 
-            for (MealType mealType : restaurant.getMealTypeEnum()) {
+            for (MealType mealType : restaurant.getMealType()) {
 
                 if (mealType.toString().equals(mealName)) {
                     restaurantResult.add(restaurant);
@@ -98,7 +98,7 @@ public class RestaurantService {
 
 
         for (Restaurant restaurant : all) {
-            for (MealType mealType : restaurant.getMealTypeEnum()) {
+            for (MealType mealType : restaurant.getMealType()) {
                 for (String cuisineType : mealName) {
                     if (mealType.toString().equals(mealName)) {
                         restaurantResult.add(restaurant);

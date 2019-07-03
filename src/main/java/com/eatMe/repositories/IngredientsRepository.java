@@ -58,14 +58,34 @@ public class IngredientsRepository {
 
     }
 
-    public Ingredients getByName(String name){
 
-        Query query = em.createQuery("select i from Ingredients i where name = " + name ,Ingredients.class);
+    public List<Ingredients> getByName(String ingredientName){
 
-         return (Ingredients) query.getResultList().get(0);
+        String queryString = "select i from Ingredients i where i.name = :ingredientName ";
+
+        Query query = em.createQuery(queryString ,Ingredients.class)
+                .setParameter("ingredientName",ingredientName);
+
+         return query.getResultList();
 
 
     }
+
+
+    public List<Ingredients> getByMealId(Long id){
+
+        String queryString = "select i from Ingredients i join i.meal m where m.id = :mealId ";
+
+        Query query = em.createQuery(queryString ,Ingredients.class)
+                .setParameter("mealId",id);
+
+        return query.getResultList();
+
+
+    }
+
+
+
 
 
 }

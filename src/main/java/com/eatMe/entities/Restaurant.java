@@ -22,7 +22,7 @@ public class Restaurant {
     @CollectionTable(name = "restaurant_meal", joinColumns = @JoinColumn(name = "restaurant_id"))
     @Column(name = "meal_type", nullable = true)
     @Enumerated(EnumType.STRING)
-   private Set<MealType> mealTypeEnum;
+   private Set<MealType> mealType;
 
     @ElementCollection(targetClass = Cuisine.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "restaurant_cuisine", joinColumns = @JoinColumn(name = "restaurant_id"))
@@ -83,8 +83,8 @@ public class Restaurant {
         this.menu = menu;
     }
 
-    public Set<MealType> getMealTypeEnum() {
-        return mealTypeEnum;
+    public Set<MealType> getMealType() {
+        return mealType;
     }
 
 

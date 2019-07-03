@@ -13,7 +13,7 @@ public class Ingredients {
 
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     Meal meal;
 
     public Ingredients() {

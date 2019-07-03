@@ -7,7 +7,7 @@ insert into MEAL(name,PRICE) values('CHRUPIĄCU KURCZAK',22.99);
 insert into MEAL(name,PRICE) values('SAŁATKA Z ORZECHAMI',18.99);
 
 
-insert into Ingredients(name) values('czosnek');
+insert into Ingredients(name,MEAL_ID) values('czosnek',1);
 insert into Ingredients(name) values('kurczak');
 insert into Ingredients(name) values('orzechy');
 insert into Ingredients(name) values('pomidor');

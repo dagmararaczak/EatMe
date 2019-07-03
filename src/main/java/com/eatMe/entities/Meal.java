@@ -17,7 +17,7 @@ public class Meal {
     @ManyToOne
     private Menu menu;
 
-    @OneToMany(mappedBy = "meal")
+    @OneToMany(mappedBy = "meal" ,fetch = FetchType.EAGER)
     private List<Ingredients> ingredients;
 
     private Meal() {
