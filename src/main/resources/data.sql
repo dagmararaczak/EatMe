@@ -2,9 +2,9 @@ insert into RESTAURANT(name) values('VAFANAPOLI');
 insert into MENU(restaurant_id) values (1);
 
 insert into MEAL(name,PRICE,MENU_ID) values('CEZAR Z KURCZAKIEM',21.5,1);
-insert into MEAL(name,PRICE) values('PIERŚ Z KACZKI',35.0);
-insert into MEAL(name,PRICE) values('CHRUPIĄCU KURCZAK',22.99);
-insert into MEAL(name,PRICE) values('SAŁATKA Z ORZECHAMI',18.99);
+insert into MEAL(name,PRICE,MENU_ID) values('PIERŚ Z KACZKI',35.0,1);
+insert into MEAL(name,PRICE,MENU_ID) values('CHRUPIĄCU KURCZAK',22.99,1);
+insert into MEAL(name,PRICE,MENU_ID) values('SAŁATKA Z ORZECHAMI',18.99,1);
 
 
 insert into Ingredients(name,MEAL_ID) values('czosnek',1);

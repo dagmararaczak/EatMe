@@ -2,6 +2,7 @@ package com.eatMe;
 
 import com.eatMe.repositories.IngredientsRepository;
 import com.eatMe.repositories.MealRepository;
+import com.eatMe.repositories.MenuRepository;
 import com.eatMe.repositories.RestaurantRepository;
 import com.eatMe.services.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class EatMeApplication implements CommandLineRunner {
 	@Autowired
 	MealRepository repository;
 
+	@Autowired
+	MenuRepository menuRepository;
+
 
 
 	public static void main(String[] args) {
@@ -35,7 +39,6 @@ public class EatMeApplication implements CommandLineRunner {
 
 
 
-		restaurantRepository.getRestaurantByMealType("VEGETARIAN");
 
 
 

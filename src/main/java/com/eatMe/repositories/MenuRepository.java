@@ -1,12 +1,15 @@
 package com.eatMe.repositories;
 
 
+import com.eatMe.entities.Meal;
 import com.eatMe.entities.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Transactional
 @Repository
@@ -34,6 +37,17 @@ public class MenuRepository {
         Menu menu = getById(id);
         em.remove(menu);
     }
+
+    public List<Meal> getMealList(Long id){
+
+        String queryString = "select m from Meal m join m.menu me where me.id = :menuId ";
+
+        Query query = em.createQuery(queryString, Meal.class)
+                .setParameter("menuId", id);
+
+        return query.getResultList();
+    }
+
 
 
 }
