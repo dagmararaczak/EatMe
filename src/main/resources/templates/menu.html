@@ -13,17 +13,21 @@
     <h1 style="font-family: fantasy" > Menu </h1>
 
     <div class="container">
-        <table class="table">
+        <table class="table table-striped">
             <thead>
             <tr>
-                <th>Meal</th>
-                <th>Price</th>
-                <th>Ingredients</th>
+
+
+                <th scope="col"><center>Meal</center></th>
+                <th scope="col"><center>Price</center></th>
+                <th scope="col"><center>Ingredients</center></th>
 
             </tr>
             </thead>
             <tbody>
-            <tr th:each="meal: ${menu}" style="border: 1px black">
+
+            <tr th:each="meal: ${menu}"  style="border: 1px black">
+
                 <td th:text="${meal.name}"></td>
                 <td th:text="${meal.price}"></td>
                 <td>
