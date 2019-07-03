@@ -42,7 +42,20 @@
         </table>
     </div>
 </div>
+<div class="container">
+    <form action="#" th:action="@{search-meal}" th:object="${ingredient}" method="post" >
+        <div class="form-group">
+            <label for="ingredient">Ingredient: </label>
+            <input type="text" id="ingredient" name="ingredient">  <!--th:field="${queryString.queryString}"-->
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-success">
 
+            </div>
+
+        </div>
+
+    </form>
+</div>
 <div th:insert="fragments :: footer"></div>
 </body>
 </html>
