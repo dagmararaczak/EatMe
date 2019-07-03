@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 
 import java.util.List;
@@ -21,35 +22,33 @@ public class IngredientsRepository {
     EntityManager em;
 
 
+    public Ingredients getById(Long id) {
 
-    public Ingredients getById(Long id){
-
-       return em.find(Ingredients.class,id);
+        return em.find(Ingredients.class, id);
 
     }
 
 
-
-    public Ingredients save(Ingredients ingredients){
-        if(ingredients.getId() == null){
+    public Ingredients save(Ingredients ingredients) {
+        if (ingredients.getId() == null) {
             em.persist(ingredients);
-        }else {
+        } else {
             em.merge(ingredients);
         }
 
         return ingredients;
     }
 
-    public void removeById(Long id){
+    public void removeById(Long id) {
 
         Ingredients ingredient = getById(id);
 
         em.remove(ingredient);
     }
 
-    public List<Ingredients> getAll(){
+    public List<Ingredients> getAll() {
 
-        Query query = em.createQuery("select i from Ingredients i",Ingredients.class);
+        Query query = em.createQuery("select i from Ingredients i", Ingredients.class);
 
         List<Ingredients> resultList = query.getResultList();
 
@@ -59,25 +58,12 @@ public class IngredientsRepository {
     }
 
 
-    public List<Ingredients> getByName(String ingredientName){
+    public List<Ingredients> getByName(String ingredientName) {
 
         String queryString = "select i from Ingredients i where i.name = :ingredientName ";
 
-        Query query = em.createQuery(queryString ,Ingredients.class)
-                .setParameter("ingredientName",ingredientName);
-
-         return query.getResultList();
-
-
-    }
-
-
-    public List<Ingredients> getByMealId(Long id){
-
-        String queryString = "select i from Ingredients i join i.meal m where m.id = :mealId ";
-
-        Query query = em.createQuery(queryString ,Ingredients.class)
-                .setParameter("mealId",id);
+        Query query = em.createQuery(queryString, Ingredients.class)
+                .setParameter("ingredientName", ingredientName);
 
         return query.getResultList();
 
@@ -85,7 +71,27 @@ public class IngredientsRepository {
     }
 
 
+    public List<Ingredients> getByMealId(Long id) {
 
+        String queryString = "select i from Ingredients i join i.meal m where m.id = :mealId ";
+
+        Query query = em.createQuery(queryString, Ingredients.class)
+                .setParameter("mealId", id);
+
+        return query.getResultList();
+
+    }
+
+    public List<Ingredients> getByMealName(String name) {
+
+        String queryString = "select i from Ingredients i join i.meal m where m.name = :mealName ";
+
+        Query query = em.createQuery(queryString, Ingredients.class)
+                .setParameter("mealName", name);
+
+        return query.getResultList();
+
+    }
 
 
 }

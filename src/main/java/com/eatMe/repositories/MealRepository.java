@@ -54,10 +54,22 @@ public class MealRepository {
 
     public List<Meal> findByIngredient(String ingredient){
 
-        Query query = em.createQuery("select m from Meal m join Ingredients i on i.meal_id = m.id where i.name =:ingredient", Meal.class)
+        Query query = em.createQuery("select m from Meal m join m.ingredients i where i.name =:ingredient", Meal.class)
                 .setParameter("ingredient",ingredient);
-//SELECT * FROM MEAL m join Ingredients i on i.meal_id = m.id where i.name ='czosnek'
+
         return query.getResultList();
 
     }
+
+    public List<Meal> findWithoutIngredient(String ingredient){
+
+        Query query = em.createQuery("select m from Meal m join m.ingredients i where i.name !=:ingredient", Meal.class)
+                .setParameter("ingredient",ingredient);
+
+        return query.getResultList();
+
+    }
+
+
 }
+
