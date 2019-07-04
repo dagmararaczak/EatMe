@@ -62,7 +62,7 @@ public class RestaurantController {
     public String search(@ModelAttribute("queryString") QueryString queryString, Model model){
 
 
-        List <Restaurant> byCuisineType = restaurantService.getByCuisineType(queryString.getCuisine());
+        List <Restaurant> byCuisineType = restaurantService.getByCuisineType(queryString.cuisine);
 
         model.addAttribute("restaurants",byCuisineType);
 
