@@ -17,7 +17,6 @@ public class MealService {
     public List<Meal> getMealByIngredient(String ingredient){
 
 
-
         return mealRepository.findByIngredient(ingredient);
 
 

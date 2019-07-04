@@ -38,7 +38,7 @@ public class EatMeApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 
-
+		restaurantService.getByCuisineType("ITALIAN");
 
 
 

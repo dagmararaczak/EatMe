@@ -23,4 +23,8 @@ public class MenuService {
 
 
     }
+
+    public Menu getMenuByRestaurantId(Long id){
+        return menuRepository.getByRestaurantId(id);
+    }
 }

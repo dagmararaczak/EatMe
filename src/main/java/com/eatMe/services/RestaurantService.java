@@ -22,99 +22,24 @@ public class RestaurantService {
 
     public List<Restaurant> getByCuisineType(String cuisineName) {
 
-        List<Restaurant> restaurantResult = new ArrayList<>();
-
-        List<Restaurant> all = restaurantRepository.getAll();
-
-
-        for (Restaurant restaurant : all) {
-
-            for (Cuisine cuisine : restaurant.getCuisine()) {
-
-                if (cuisine.toString().equals(cuisineName)) {
-                    restaurantResult.add(restaurant);
-                }
-            }
-
-
-        }
-
-        return restaurantResult;
+        return restaurantRepository.getRestaurantByCuisine(cuisineName);
     }
 
-    public Set<Restaurant> getByMoreCuisineType(String... cuisineName) {
-
-        Set<Restaurant> restaurantResult = new HashSet<>();
-
-        List<Restaurant> all = restaurantRepository.getAll();
-
-        List<Cuisine> cuisineToCheck = new ArrayList<>();
 
 
-        for (Restaurant restaurant : all) {
-            for (Cuisine cuisine : restaurant.getCuisine()) {
-                for (String cuisineType : cuisineName) {
-                    if (cuisine.toString().equals(cuisineType)) {
-                        restaurantResult.add(restaurant);
-                    }
-                }
-
-            }
-        }
-
-
-        return restaurantResult;
-    }
-
-    public List<Restaurant> getByMealType(String mealName) {
-
-        List<Restaurant> restaurantResult = new ArrayList<>();
-
-        List<Restaurant> all = restaurantRepository.getAll();
-
-
-        for (Restaurant restaurant : all) {
-
-            for (MealType mealType : restaurant.getMealType()) {
-
-                if (mealType.toString().equals(mealName)) {
-                    restaurantResult.add(restaurant);
-                }
-            }
-
-
-        }
-
-        return restaurantResult;
-    }
-
-    public Set<Restaurant> getByMoreMealTypes(String... mealName) {
-
-        Set<Restaurant> restaurantResult = new HashSet<>();
-
-        List<Restaurant> all = restaurantRepository.getAll();
-
-        List<Cuisine> cuisineToCheck = new ArrayList<>();
-
-
-        for (Restaurant restaurant : all) {
-            for (MealType mealType : restaurant.getMealType()) {
-                for (String cuisineType : mealName) {
-                    if (mealType.toString().equals(mealName)) {
-                        restaurantResult.add(restaurant);
-                    }
-                }
-
-            }
-        }
-
-
-        return restaurantResult;
-    }
 
     public List<Restaurant> findByName(String name){
 
        return restaurantRepository.findByName(name);
+    }
+
+
+    public List<Restaurant> getAll(){
+        return restaurantRepository.getAll();
+    }
+
+    public Restaurant getById(Long id){
+        return restaurantRepository.getById(id);
     }
 
 }

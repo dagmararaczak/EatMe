@@ -1,8 +1,11 @@
 package com.eatMe.controllers;
 
 
+import com.eatMe.entities.Meal;
+import com.eatMe.entities.Menu;
 import com.eatMe.entities.Restaurant;
 import com.eatMe.repositories.RestaurantRepository;
+import com.eatMe.services.MenuService;
 import com.eatMe.services.RestaurantService;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +23,17 @@ public class RestaurantController {
     @Autowired
     private ApplicationContext context;
 
-  RestaurantRepository restaurantRepository;
+
 
   RestaurantService restaurantService;
 
+  MenuService menuService;
+
   @Autowired
-    public RestaurantController(RestaurantRepository restaurantRepository, RestaurantService restaurantService) {
-        this.restaurantRepository = restaurantRepository;
+    public RestaurantController(RestaurantService restaurantService, MenuService menuService) {
         this.restaurantService = restaurantService;
+        this.menuService = menuService;
     }
-
-
 
     @GetMapping("welcome")
 
@@ -43,7 +46,7 @@ public class RestaurantController {
 
     public String allRestaurants(Model model){
 
-        List<Restaurant> allRestaurants = restaurantRepository.getAll();
+        List<Restaurant> allRestaurants = restaurantService.getAll();
 
         model.addAttribute("restaurants",allRestaurants);
 
@@ -67,6 +70,8 @@ public class RestaurantController {
         model.addAttribute("restaurants",byCuisineType);
 
 
+
+
         return "allRestaurants";
     }
 
@@ -78,9 +83,12 @@ public class RestaurantController {
 
         Long restaurantId = Long.parseLong(id);
 
-        Restaurant restaurant = restaurantRepository.getById(restaurantId);
+        Restaurant restaurant = restaurantService.getById(restaurantId);
+        Menu menuByRestaurantId = menuService.getMenuByRestaurantId(restaurantId);
+        List<Meal> mealList = menuService.getMealList(menuByRestaurantId.getId());
 
         model.addAttribute("restaurant",restaurant);
+        model.addAttribute("menu",mealList);
 
 
 
