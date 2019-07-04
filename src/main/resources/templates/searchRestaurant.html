@@ -9,16 +9,17 @@
 </head>
 <body>
 <div th:insert="fragments :: mainNavbar"></div>
-<div class="jumbotron text-center" style="background-color: beige">
+<div class="jumbotron text-center" style="background-color: cornflowerblue">
     <h1 style="font-family: fantasy" > Search </h1>
 
     <div class="container">
         <form action="#" th:action="@{/search-restaurant}" th:object="${queryString}" method="post" >
 
             <div class="form-group">
-                Wyszukaj restauracje: <br>
-                <label for="queryString">Cuisine</label>
-                <select name ="${queryString.cuisine}"  id="queryString">
+               <p style="font-size: large">Search for Restaurant </p> <br><br>
+                <label for="queryString"><p>Cuisine</p></label>
+                <br>
+                <select th:field="${queryString.cuisine}"  id="queryString" style="width: 80%">
                     <option th:value="ITALIAN">ITALIAN</option>
                     <option th:value="GREEK">GREEK</option>
                     <option th:value="CHINESE">CHINESE</option>
@@ -26,17 +27,20 @@
                     <option th:value="POLAND">POLAND</option>
                     <option th:value="AMERICAN">AMERICAN</option>
                 </select>
+                </div>
                 <br>
-                <label for="meal">Meal</label>
-                <select name="${queryString.meal}"  id="meal" style="width: 100%">
+            <div class="form-group">
+                <label for="meal"><p>Meal</p></label>
+                <br>
+                <select  th:field="${queryString.meal}"  id="meal" style="width: 80%">
                     <option th:value="VEGETARIAN">VEGETARIAN</option>
                     <option th:value="MEAT">MEAT</option>
                     <option th:value="GLUTENFREE">GLUTENFREE</option>
                     <option th:value="LACTOSEFREE">LACTOSEFREE</option>
                 </select>
-
+        </div>
                 <div class="form-group">
-                    <input type="submit" value="Submit" class="btn" style="background-color: darkslategrey">
+                    <input type="submit" value="Submit" class="btn"  style="background-color: lightseagreen">
 
                 </div>
 

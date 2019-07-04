@@ -9,29 +9,30 @@
 </head>
 <body>
 <div th:insert="fragments :: mainNavbar"></div>
-<div class="jumbotron text-center" style="background-color: beige">
+<div class="jumbotron text-center" style="background-color: cornflowerblue">
     <h1 style="font-family: fantasy" > Restaurants </h1>
-
+</div>
     <div class="container">
-        <table class="table">
+        <table class="table table-striped">
             <thead>
             <tr>
-                <th><center>Restaurants:</center></th>
-                <th><center>Cuisine</center></th>
+                <th>Restaurants</th>
+                <th>Cuisine</th>
+                <th>Check</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="restaurant: ${restaurants}" style="border: 1px black">
                 <td th:text="${restaurant.name}"></td>
                 <td th:text="${restaurant.cuisine}"></td>
-              <td><a class="btn" style="background-color: darkcyan"
+              <td><a class="btn" style="background-color: pink"
                      th:href="@{http://localhost:8080/restaurant-profile?(id=${restaurant.id})}">view</a></td>
 
             </tr>
             </tbody>
         </table>
     </div>
-</div>
+
 
 <div th:insert="fragments :: footer"></div>
 </body>
