@@ -18,7 +18,7 @@
             <div class="form-group">
                 Wyszukaj restauracje: <br>
                 <label for="queryString">Cuisine</label>
-                <select name ="${queryString.cuisine}"  id="queryString">
+                <select th:field="${queryString.cuisine}"  id="queryString">
                     <option th:value="ITALIAN">ITALIAN</option>
                     <option th:value="GREEK">GREEK</option>
                     <option th:value="CHINESE">CHINESE</option>
@@ -28,7 +28,7 @@
                 </select>
                 <br>
                 <label for="meal">Meal</label>
-                <select name="${queryString.meal}"  id="meal" style="width: 100%">
+                <select th:field="${queryString.meal}"  id="meal" style="width: 100%">
                     <option th:value="VEGETARIAN">VEGETARIAN</option>
                     <option th:value="MEAT">MEAT</option>
                     <option th:value="GLUTENFREE">GLUTENFREE</option>
