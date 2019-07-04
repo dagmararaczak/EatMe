@@ -35,8 +35,6 @@
         <table class="table table-striped">
             <thead>
             <tr>
-
-
                 <th scope="col"><center>Meal</center></th>
                 <th scope="col"><center>Price</center></th>
                 <th scope="col"><center>Ingredients</center></th>
@@ -59,6 +57,20 @@
             </tr>
             </tbody>
         </table>
+    </div>
+    <div class="container">
+        <form action="#" th:action="@{search-meal}" th:object="${ingredient}" method="post" >
+            <div class="form-group">
+                <label for="ingredient">Ingredient: </label>
+                <input type="text" id="ingredient" name="ingredient">  <!--th:field="${queryString.queryString}"-->
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-success">
+
+                </div>
+
+            </div>
+
+        </form>
     </div>
 </div>
 
