@@ -20,11 +20,6 @@ import java.util.Set;
 @Controller
 public class RestaurantController {
 
-    @Autowired
-    private ApplicationContext context;
-
-
-
   RestaurantService restaurantService;
 
   MenuService menuService;
@@ -42,7 +37,7 @@ public class RestaurantController {
         return "welcome";
     }
 
-    @GetMapping("allRestaurants")
+    @GetMapping("all-Restaurants")
 
     public String allRestaurants(Model model){
 
@@ -55,7 +50,8 @@ public class RestaurantController {
     }
 
     @GetMapping("search-restaurant")
-    public String searchRestaurant(){
+    public String searchRestaurant(Model model){
+      model.addAttribute("queryString",new QueryString());
 
         return "searchRestaurant";
     }
@@ -65,11 +61,10 @@ public class RestaurantController {
     @PostMapping("search-restaurant")
     public String search(@ModelAttribute("queryString") QueryString queryString, Model model){
 
-        List<Restaurant> byCuisineType = restaurantService.getByCuisineType(queryString.getCuisine());
+
+        List <Restaurant> byCuisineType = restaurantService.getByCuisineType(queryString.getCuisine());
 
         model.addAttribute("restaurants",byCuisineType);
-
-
 
 
         return "allRestaurants";
@@ -101,6 +96,7 @@ public class RestaurantController {
         String queryString;
 
         String cuisine;
+
         String meal;
 
         public String getMeal() {
