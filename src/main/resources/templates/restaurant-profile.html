@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
+    <title>Restaurant</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -10,7 +10,7 @@
 <body>
 <div th:insert="fragments :: mainNavbar"></div>
 <div class="jumbotron text-center" style="background-color: beige">
-    <h1 style="font-family: fantasy" > Restaurants </h1>
+    <h1 style="font-family: fantasy" > Restaurant </h1>
 
     <div class="container">
         <table class="table">
@@ -21,11 +21,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="restaurant: ${restaurants}" style="border: 1px black">
+            <tr th:each="restaurant: ${restaurant}" style="border: 1px black">
                 <td th:text="${restaurant.name}"></td>
                 <td th:text="${restaurant.cuisine}"></td>
-              <td><a class="btn" style="background-color: darkcyan"
-                     th:href="@{http://localhost:8080/restaurant-profile?(id=${restaurant.id})}">view</a></td>
 
             </tr>
             </tbody>

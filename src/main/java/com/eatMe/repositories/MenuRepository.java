@@ -49,5 +49,13 @@ public class MenuRepository {
     }
 
 
+    public Menu getByRestaurantId(Long restaurantId){
+        String queryString ="select m from Menu m join m.restaurant r where r.id =:id";
+
+        Query query = em.createQuery(queryString)
+                .setParameter("id",restaurantId);
+
+        return (Menu) query.getResultList().get(0);
+    }
 
 }

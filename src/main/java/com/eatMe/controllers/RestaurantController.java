@@ -6,6 +6,7 @@ import com.eatMe.repositories.RestaurantRepository;
 import com.eatMe.services.RestaurantService;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,8 @@ import java.util.Set;
 @Controller
 public class RestaurantController {
 
+    @Autowired
+    private ApplicationContext context;
 
   RestaurantRepository restaurantRepository;
 
@@ -54,18 +57,35 @@ public class RestaurantController {
         return "searchRestaurant";
     }
 
+
+
     @PostMapping("search-restaurant")
     public String search(@ModelAttribute("queryString") QueryString queryString, Model model){
 
         List<Restaurant> byCuisineType = restaurantService.getByCuisineType(queryString.getCuisine());
 
-        model.addAttribute("restaurantbycuisine",byCuisineType);
-
+        model.addAttribute("restaurants",byCuisineType);
 
 
         return "allRestaurants";
     }
 
+
+
+
+    @GetMapping("restaurant-profile")
+    public String getRestaurant(@RequestParam("id") String id,Model model){
+
+        Long restaurantId = Long.parseLong(id);
+
+        Restaurant restaurant = restaurantRepository.getById(restaurantId);
+
+        model.addAttribute("restaurant",restaurant);
+
+
+
+        return "restaurant-profile";
+    }
 
 
     public static class QueryString{
