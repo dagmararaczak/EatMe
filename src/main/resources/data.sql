@@ -21,6 +21,9 @@ insert into Ingredients(name) values('kaczka');
 
 insert into restaurant_cuisine(restaurant_id, cuisine) VALUES (1,'ITALIAN');
 insert into restaurant_cuisine(restaurant_id, cuisine) VALUES (2,'AMERICAN');
+insert into RESTAURANT_MEAL(restaurant_id, MEAL_TYPE) VALUES (1,'VEGETARIAN');
+insert into RESTAURANT_MEAL(restaurant_id, MEAL_TYPE) VALUES (1,'GLUTENFREE');
+insert into RESTAURANT_MEAL(restaurant_id, MEAL_TYPE) VALUES (2,'GLUTENFREE');
 
 
 
