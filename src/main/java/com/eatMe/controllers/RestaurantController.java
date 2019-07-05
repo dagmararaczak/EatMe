@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -61,10 +62,9 @@ public class RestaurantController {
     @PostMapping("search-restaurant")
     public String search(@ModelAttribute("queryString") QueryString queryString, Model model){
 
+        Set<Restaurant> restaurants = restaurantService.getByCuisineAndMeal(queryString.cuisinelist, queryString.meallist);
 
-        List <Restaurant> byCuisineType = restaurantService.getByCuisineType(queryString.cuisine);
-
-        model.addAttribute("restaurants",byCuisineType);
+       model.addAttribute("restaurants",restaurants);
 
 
         return "allRestaurants";
@@ -98,6 +98,25 @@ public class RestaurantController {
         String cuisine;
 
         String meal;
+
+        List<String> cuisinelist = new ArrayList<>();
+        List<String> meallist = new ArrayList<>();
+
+        public List<String> getCuisinelist() {
+            return cuisinelist;
+        }
+
+        public void setCuisinelist(List<String> cuisinelist) {
+            this.cuisinelist = cuisinelist;
+        }
+
+        public List<String> getMeallist() {
+            return meallist;
+        }
+
+        public void setMeallist(List<String> meallist) {
+            this.meallist = meallist;
+        }
 
         public String getMeal() {
             return meal;

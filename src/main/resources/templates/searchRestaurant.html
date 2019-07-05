@@ -19,7 +19,7 @@
                <p style="font-size: large">Search for Restaurant </p> <br><br>
                 <label for="queryString"><p>Cuisine</p></label>
                 <br>
-                <select th:field="${queryString.cuisine}"  id="queryString" style="width: 80%">
+                <select th:field="${queryString.cuisinelist}" multiple  id="queryString" style="width: 80%">
                     <option th:value="ITALIAN">ITALIAN</option>
                     <option th:value="GREEK">GREEK</option>
                     <option th:value="CHINESE">CHINESE</option>
@@ -32,7 +32,7 @@
             <div class="form-group">
                 <label for="meal"><p>Meal</p></label>
                 <br>
-                <select  th:field="${queryString.meal}"  id="meal" style="width: 80%">
+                <select  th:field="${queryString.meallist}" multiple  id="meal" style="width: 80%">
                     <option th:value="VEGETARIAN">VEGETARIAN</option>
                     <option th:value="MEAT">MEAT</option>
                     <option th:value="GLUTENFREE">GLUTENFREE</option>

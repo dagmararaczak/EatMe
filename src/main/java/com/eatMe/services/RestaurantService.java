@@ -26,8 +26,6 @@ public class RestaurantService {
     }
 
 
-
-
     public List<Restaurant> findByName(String name){
 
        return restaurantRepository.findByName(name);
@@ -42,4 +40,35 @@ public class RestaurantService {
         return restaurantRepository.getById(id);
     }
 
+
+    public Set<Restaurant> getByCuisineAndMeal(List<String> cuisine,List<String> meal){
+
+        Set<Restaurant> resultRestaurants = new HashSet<>();
+        Set<Restaurant> restaurantsByCuisine = new HashSet<>();
+        Set<Restaurant> restaurantsByMeal = new HashSet<>();
+
+        for (String cuisineName : cuisine) {
+
+            List<Restaurant> restaurantByCuisine = restaurantRepository.getRestaurantByCuisine(cuisineName);
+            restaurantsByCuisine.addAll(restaurantByCuisine);
+
+
+        }
+
+        for (String mealName : meal) {
+
+            List<Restaurant> restaurantByMealType = restaurantRepository.getRestaurantByMealType(mealName);
+            restaurantsByMeal.addAll(restaurantByMealType);
+
+        }
+
+        resultRestaurants.addAll(restaurantsByCuisine);
+        resultRestaurants.addAll(restaurantsByMeal);
+
+        return resultRestaurants;
+
+    }
+
+
 }
+
