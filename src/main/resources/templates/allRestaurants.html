@@ -18,6 +18,7 @@
             <tr>
                 <th>Restaurants</th>
                 <th>Cuisine</th>
+                <th>Meal</th>
                 <th>Check</th>
             </tr>
             </thead>
@@ -25,6 +26,7 @@
             <tr th:each="restaurant: ${restaurants}" style="border: 1px black">
                 <td th:text="${restaurant.name}"></td>
                 <td th:text="${restaurant.cuisine}"></td>
+                <td th:text="${restaurant.mealType}"></td>
               <td><a class="btn" style="background-color: pink"
                      th:href="@{http://localhost:8080/restaurant-profile?(id=${restaurant.id})}">view</a></td>
 
