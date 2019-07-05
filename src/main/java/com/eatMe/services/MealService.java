@@ -20,10 +20,28 @@ public class MealService {
     @Autowired
     MenuService menuService;
 
-    public List<Meal> getMealByIngredient(String ingredient){
 
+    public List<Meal> getMealByIngredient(Long restaurantId, String ingredient){
 
-        return mealRepository.findByIngredient(ingredient);
+        List<Meal> mealsWithIngredients = new ArrayList<>();
+
+        Menu menuByRestaurantId = menuService.getMenuByRestaurantId(restaurantId);
+
+        List<Meal> mealList = menuService.getMealList(menuByRestaurantId.getId());
+
+        List<Meal> withIngredientAll = mealRepository.findByIngredient(ingredient);
+
+        for (Meal meal : mealList) {
+
+            if (withIngredientAll.contains(meal)) {
+
+                mealsWithIngredients.add(meal);
+
+            }
+
+        }
+
+        return mealsWithIngredients;
 
 
     }
@@ -59,7 +77,7 @@ public class MealService {
         Set<Meal> resultMeals = new HashSet<>();
         List<Meal> mealWithoutIngredient = getMealWithoutIngredient(restaurantId, ingredientsYouDontWanna);
 
-        List<Meal> mealByIngredient = getMealByIngredient(ingredientWanted);
+        List<Meal> mealByIngredient = getMealByIngredient(restaurantId,ingredientWanted);
 
 
         if(mealByIngredient.isEmpty()){
