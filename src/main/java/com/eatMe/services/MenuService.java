@@ -27,10 +27,10 @@ public class MenuService {
         this.mealRepository = mealRepository;
     }
 
-    public List<Meal> getMealList(Long id){
+    public List<Meal> getMealList(Long menuId){
 
 
-       return menuRepository.getMealList(id);
+       return menuRepository.getMealList(menuId);
 
 
     }
@@ -56,4 +56,5 @@ public class MenuService {
 
         return result;
     }
+
 }

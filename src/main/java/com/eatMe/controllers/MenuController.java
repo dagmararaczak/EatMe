@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -40,10 +41,12 @@ public class MenuController {
         return "menu";
     }
     @PostMapping("search-meal")
-    public String showMealsWithIngredient(@ModelAttribute("ingredient") String ingredient, Model model){
+    public String showMealsWithIngredient(@ModelAttribute("ingredient") String ingredient, @RequestParam("id") String id, Model model){
 
+        Long restaurantId = Long.parseLong(id);
         List<Meal> mealByIngredient = mealService.getMealByIngredient(ingredient);
-        List<Meal> mealWithoutIngredient = mealService.getMealWithoutIngredient(ingredient);
+
+        List<Meal> mealWithoutIngredient = mealService.getMealWithoutIngredient1(restaurantId, ingredient);
         model.addAttribute("menu",mealWithoutIngredient);
 
         //model.addAttribute("ingredients",menuService.getAllIngredients(restaurantId));
