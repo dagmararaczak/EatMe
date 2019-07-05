@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class MenuController {
@@ -41,15 +42,12 @@ public class MenuController {
         return "menu";
     }
     @PostMapping("search-meal")
-    public String showMealsWithIngredient(@ModelAttribute("ingredient") String ingredient, @RequestParam("id") String id, Model model){
+    public String showMealsWithIngredient(@ModelAttribute("ingredient") String ingredient,@ModelAttribute("withoutIngredient") String withoutIngredient, @RequestParam("id") String id, Model model){
 
         Long restaurantId = Long.parseLong(id);
-        List<Meal> mealByIngredient = mealService.getMealByIngredient(ingredient);
+        Set<Meal> meals = mealService.choseByIngredients(restaurantId, ingredient, withoutIngredient);
+        model.addAttribute("menu",meals);
 
-        List<Meal> mealWithoutIngredient = mealService.getMealWithoutIngredient1(restaurantId, ingredient);
-        model.addAttribute("menu",mealWithoutIngredient);
-
-        //model.addAttribute("ingredients",menuService.getAllIngredients(restaurantId));
 
         return "menu";
 

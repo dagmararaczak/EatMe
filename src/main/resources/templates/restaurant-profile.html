@@ -69,8 +69,12 @@
     <div class="container">
         <form action="#" th:action="@{search-meal?(id=${restaurant.id})}" th:object="${ingredient}" method="post" >
             <div class="form-group" style="text-align: center">
-                <label for="ingredient">Ingredient: </label> <br>
+                <label for="ingredient">Ingredient you are looking for: </label> <br>
                 <input type="text" id="ingredient" name="ingredient" style="width: 80%">
+                <div class="form-group" style="text-align: center">
+                    <label for="withoutIngredient">Ingredient you don't want to eat: </label> <br>
+                    <input type="text" id="withoutIngredient" name="withoutIngredient" style="width: 80%">
+
                <!-- <select th:field="*{percentage}">
                     <option th:each="i : ${#numbers.sequence(0, 100)}" th:value="${i}" th:text="${i}">
                     </option>-->

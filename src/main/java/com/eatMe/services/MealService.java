@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class MealService {
@@ -26,15 +28,8 @@ public class MealService {
 
     }
 
-    public List<Meal> getMealWithoutIngredient(String ingredient){
 
-
-        return mealRepository.findWithoutIngredient(ingredient);
-
-
-    }
-
-    public List<Meal> getMealWithoutIngredient1(Long restaurantId, String ingredient) {
+    public List<Meal> getMealWithoutIngredient(Long restaurantId, String ingredient) {
 
         List<Meal> mealsWithoutIngredients = new ArrayList<>();
 
@@ -55,6 +50,40 @@ public class MealService {
         }
 
         return mealsWithoutIngredients;
+
+
+    }
+
+    public Set<Meal> choseByIngredients(Long restaurantId, String ingredientWanted, String ingredientsYouDontWanna){
+
+        Set<Meal> resultMeals = new HashSet<>();
+        List<Meal> mealWithoutIngredient = getMealWithoutIngredient(restaurantId, ingredientsYouDontWanna);
+
+        List<Meal> mealByIngredient = getMealByIngredient(ingredientWanted);
+
+
+        if(mealByIngredient.isEmpty()){
+
+            resultMeals.addAll(mealWithoutIngredient);
+
+            return resultMeals;
+        }else if(mealWithoutIngredient.isEmpty()){
+
+            resultMeals.addAll(mealByIngredient);
+
+        }else {
+
+            for (Meal meal : mealWithoutIngredient) {
+
+                if (mealByIngredient.contains(meal)){
+                    resultMeals.add(meal);
+                }
+            }
+        }
+
+
+
+        return resultMeals;
 
 
     }
