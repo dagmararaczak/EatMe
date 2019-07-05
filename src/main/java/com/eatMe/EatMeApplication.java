@@ -37,6 +37,6 @@ public class EatMeApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-
+		repository.findWithoutIngredient("czosnek");
 	}
 }

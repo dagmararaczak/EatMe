@@ -16,6 +16,9 @@ public class MealRepository {
     @Autowired
     EntityManager em;
 
+    @Autowired
+    IngredientsRepository ingredientsRepository;
+
     public Meal getById(Long id){
 
         return em.find(Meal.class, id);
@@ -75,9 +78,11 @@ public class MealRepository {
 
     public List<Meal> findWithoutIngredient(String ingredient){
 
-        Query query = em.createQuery("select m from Meal m join m.ingredients i where i.name !=:ingredient", Meal.class)
+
+        Query query = em.createQuery("select m from Meal m , Ingredients i where i.name =:ingredient and i not member of m.ingredients ", Meal.class)
                 .setParameter("ingredient",ingredient);
 
+        //select r from Restaurant r where :cuisineName MEMBER OF r.cuisine
         return query.getResultList();
 
     }

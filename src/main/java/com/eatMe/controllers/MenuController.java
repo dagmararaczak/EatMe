@@ -43,7 +43,9 @@ public class MenuController {
     public String showMealsWithIngredient(@ModelAttribute("ingredient") String ingredient, Model model){
 
         List<Meal> mealByIngredient = mealService.getMealByIngredient(ingredient);
-        model.addAttribute("menu",mealByIngredient);
+        List<Meal> mealWithoutIngredient = mealService.getMealWithoutIngredient(ingredient);
+        model.addAttribute("menu",mealWithoutIngredient);
+
         //model.addAttribute("ingredients",menuService.getAllIngredients(restaurantId));
 
         return "menu";

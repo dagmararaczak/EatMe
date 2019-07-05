@@ -22,5 +22,13 @@ public class MealService {
 
     }
 
+    public List<Meal> getMealWithoutIngredient(String ingredient){
+
+
+        return mealRepository.findWithoutIngredient(ingredient);
+
+
+    }
+
 
 }
