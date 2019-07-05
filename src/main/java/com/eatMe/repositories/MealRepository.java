@@ -1,4 +1,5 @@
 package com.eatMe.repositories;
+import com.eatMe.entities.Ingredients;
 import com.eatMe.entities.Meal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -79,6 +80,13 @@ public class MealRepository {
 
         return query.getResultList();
 
+    }
+
+    public List<Ingredients> getAll(Long mealId){
+        Query query = em.createQuery("select i from Ingredients i join i.meal m where m.id =:id")
+                .setParameter("id",mealId);
+
+        return query.getResultList();
     }
 
 

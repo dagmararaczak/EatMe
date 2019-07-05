@@ -44,6 +44,7 @@ public class MenuController {
 
         List<Meal> mealByIngredient = mealService.getMealByIngredient(ingredient);
         model.addAttribute("menu",mealByIngredient);
+        //model.addAttribute("ingredients",menuService.getAllIngredients(restaurantId));
 
         return "menu";
 

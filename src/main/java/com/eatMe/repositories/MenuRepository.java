@@ -38,12 +38,12 @@ public class MenuRepository {
         em.remove(menu);
     }
 
-    public List<Meal> getMealList(Long id){
+    public List<Meal> getMealList(Long menuId){
 
         String queryString = "select m from Meal m join m.menu me where me.id = :menuId ";
 
         Query query = em.createQuery(queryString, Meal.class)
-                .setParameter("menuId", id);
+                .setParameter("menuId", menuId);
 
         return query.getResultList();
     }
