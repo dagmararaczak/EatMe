@@ -1,6 +1,7 @@
 package com.eatMe.controllers;
 
 
+import com.eatMe.entities.Cuisine;
 import com.eatMe.entities.Meal;
 import com.eatMe.entities.Menu;
 import com.eatMe.entities.Restaurant;

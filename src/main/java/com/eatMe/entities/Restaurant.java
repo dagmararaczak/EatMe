@@ -20,33 +20,8 @@ public class Restaurant {
     @Column(nullable = true)
     private String googleMap;
 
-    public String getGoogleMap() {
-        return googleMap;
-    }
-
-    public void setGoogleMap(String googleMap) {
-        this.googleMap = googleMap;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setMealType(Set<MealType> mealType) {
-        this.mealType = mealType;
-    }
+    @OneToOne(mappedBy = "restaurant")
+    private Adres adres;
 
     @Column(nullable = true)
     private Double maxCost;
@@ -122,5 +97,39 @@ public class Restaurant {
         return mealType;
     }
 
+    public String getGoogleMap() {
+        return googleMap;
+    }
 
+    public void setGoogleMap(String googleMap) {
+        this.googleMap = googleMap;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setMealType(Set<MealType> mealType) {
+        this.mealType = mealType;
+    }
+
+    public Adres getAdres() {
+        return adres;
+    }
+
+    public void setAdres(Adres adres) {
+        this.adres = adres;
+    }
 }
