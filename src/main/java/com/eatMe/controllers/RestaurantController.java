@@ -1,11 +1,10 @@
 package com.eatMe.controllers;
 
 
-import com.eatMe.entities.Cuisine;
-import com.eatMe.entities.Meal;
-import com.eatMe.entities.Menu;
-import com.eatMe.entities.Restaurant;
+import com.eatMe.entities.*;
+import com.eatMe.repositories.AdresRepository;
 import com.eatMe.repositories.RestaurantRepository;
+import com.eatMe.services.AdresService;
 import com.eatMe.services.MenuService;
 import com.eatMe.services.RestaurantService;
 import org.hibernate.Session;
@@ -26,10 +25,13 @@ public class RestaurantController {
 
   MenuService menuService;
 
+  AdresService adresService;
+
   @Autowired
-    public RestaurantController(RestaurantService restaurantService, MenuService menuService) {
+    public RestaurantController(RestaurantService restaurantService, MenuService menuService, AdresService adresService ) {
         this.restaurantService = restaurantService;
         this.menuService = menuService;
+        this.adresService = adresService;
     }
 
     @GetMapping("welcome")
@@ -82,9 +84,11 @@ public class RestaurantController {
         Restaurant restaurant = restaurantService.getById(restaurantId);
         Menu menuByRestaurantId = menuService.getMenuByRestaurantId(restaurantId);
         List<Meal> mealList = menuService.getMealList(menuByRestaurantId.getId());
+        Adres adres = adresService.getByRestaurantId(restaurantId);
 
         model.addAttribute("restaurant",restaurant);
         model.addAttribute("menu",mealList);
+        model.addAttribute("adres",adres);
 
 
 
