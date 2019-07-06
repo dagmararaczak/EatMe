@@ -17,6 +17,16 @@ public class Restaurant {
     private String phoneNumber;
     @Column(nullable = true)
     private String email;
+    @Column(nullable = true)
+    private String googleMap;
+
+    public String getGoogleMap() {
+        return googleMap;
+    }
+
+    public void setGoogleMap(String googleMap) {
+        this.googleMap = googleMap;
+    }
 
     public String getEmail() {
         return email;

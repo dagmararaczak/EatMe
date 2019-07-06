@@ -12,20 +12,25 @@
 <div class="jumbotron text-center" style="background-color: cornflowerblue">
     <h1 style="font-family: fantasy" > Restaurant </h1>
     <h1 style="font-family: fantasy"  th:text="${restaurant.name}"> </h1>
-
 </div>
+
     <div class="container">
+        <iframe  th:src="|https://www.google.com/maps/${restaurant.googleMap}|" width="450" height="450" frameborder="0" style="border:0" align="right" ></iframe>
+
         <div class="card">
             <div class="form-group" style="text-align: center">
-          <span><strong>Cuisine:</strong></span><span class="title" th:text="${restaurant.cuisine}" style="font-size: large" ></span><br>
-          <span><strong>Meal:</strong></span><span class="title" th:text="${restaurant.mealType}" style="font-size: large" ></span>
+                 <span class="glyphicon glyphicon-cutlery"></span>
+          <p><strong>Cuisine:</strong></p><p class="title" th:text="${restaurant.cuisine}" style="font-size: large" ></p>
+                <span class="glyphicon glyphicon-apple"></span>
+          <p><strong>Meal:</strong></p><p class="title" th:text="${restaurant.mealType}" style="font-size: large" ></p>
             </div>
         </div>
 
-    </div>
+
 
 <div>
     <div class="contact-info" style="text-align: center">
+        <span class="glyphicon glyphicon-earphone"></span>
         <p><strong>Phone:</strong></p>
         <a th:href="|tel:${restaurant.phoneNumber}|" th:text="${restaurant.phoneNumber}"/>
     </div>
@@ -34,10 +39,14 @@
 
 <div>
     <div class="contact-info" style="text-align: center">
-        <p><strong>E-mail Adress</strong></p>
+        <span class="glyphicon glyphicon-envelope"></span>  <p><strong>E-mail Adress</strong></p>
         <a th:href="|mailto:${restaurant.email}|" th:text="${restaurant.email}"></a>
     </div>
 </div>
+
+
+
+    </div>
 
     <h1><center>MENU</center></h1>
     <div class="container">

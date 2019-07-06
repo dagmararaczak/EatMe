@@ -1,4 +1,4 @@
-insert into RESTAURANT(name,phone_number,email) values('VAFANAPOLI','696-331-424','dagmararaczak@gmail.com');
+insert into RESTAURANT(name,phone_number,email,google_map) values('VAFANAPOLI','696-331-424','dagmararaczak@gmail.com','embed?pb=!1m18!1m12!1m3!1d2505.0036998986875!2d17.022653274182616!3d51.1083919032671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fc20b0b11b5c1%3A0x108e19847d58417e!2sVaffaNapoli!5e0!3m2!1spl!2spl!4v1562411893288!5m2!1spl!2spl');
 insert into RESTAURANT(name) values('PASIBUS');
 insert into MENU(restaurant_id) values (1);
 insert into MENU(restaurant_id) values (2);
