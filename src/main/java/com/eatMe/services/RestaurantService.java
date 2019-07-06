@@ -47,23 +47,60 @@ public class RestaurantService {
         Set<Restaurant> restaurantsByCuisine = new HashSet<>();
         Set<Restaurant> restaurantsByMeal = new HashSet<>();
 
-        for (String cuisineName : cuisine) {
+        if(cuisine.isEmpty()){
 
-            List<Restaurant> restaurantByCuisine = restaurantRepository.getRestaurantByCuisine(cuisineName);
-            restaurantsByCuisine.addAll(restaurantByCuisine);
 
+            for (String mealName : meal) {
+
+                List<Restaurant> restaurantByMealType = restaurantRepository.getRestaurantByMealType(mealName);
+                restaurantsByMeal.addAll(restaurantByMealType);
+
+            }
+
+            return restaurantsByMeal;
+
+        } else if(meal.isEmpty()){
+
+            for (String cuisineName : cuisine) {
+
+                List<Restaurant> restaurantByCuisine = restaurantRepository.getRestaurantByCuisine(cuisineName);
+                restaurantsByCuisine.addAll(restaurantByCuisine);
+
+
+            }
+
+            return restaurantsByCuisine;
+
+        } else{
+
+            for (String cuisineName : cuisine) {
+
+                List<Restaurant> restaurantByCuisine = restaurantRepository.getRestaurantByCuisine(cuisineName);
+                restaurantsByCuisine.addAll(restaurantByCuisine);
+
+
+            }
+
+            for (String mealName : meal) {
+
+                List<Restaurant> restaurantByMealType = restaurantRepository.getRestaurantByMealType(mealName);
+                restaurantsByMeal.addAll(restaurantByMealType);
+
+            }
+
+
+            for (Restaurant restaurant : restaurantsByCuisine) {
+
+                if(restaurantsByMeal.contains(restaurant)){
+                    resultRestaurants.add(restaurant);
+                }
+            }
 
         }
 
-        for (String mealName : meal) {
 
-            List<Restaurant> restaurantByMealType = restaurantRepository.getRestaurantByMealType(mealName);
-            restaurantsByMeal.addAll(restaurantByMealType);
-
-        }
-
-        resultRestaurants.addAll(restaurantsByCuisine);
-        resultRestaurants.addAll(restaurantsByMeal);
+        /*resultRestaurants.addAll(restaurantsByCuisine);
+        resultRestaurants.addAll(restaurantsByMeal);*/
 
         return resultRestaurants;
 
