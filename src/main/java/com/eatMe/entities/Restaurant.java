@@ -14,6 +14,31 @@ public class Restaurant {
     private String name;
 
     @Column(nullable = true)
+    private String phoneNumber;
+    @Column(nullable = true)
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setMealType(Set<MealType> mealType) {
+        this.mealType = mealType;
+    }
+
+    @Column(nullable = true)
     private Double maxCost;
     @Column(nullable = true)
     private Double minCost;

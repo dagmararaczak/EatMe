@@ -21,22 +21,23 @@
           <span><strong>Meal:</strong></span><span class="title" th:text="${restaurant.mealType}" style="font-size: large" ></span>
             </div>
         </div>
-        <!--<table class="table">
-            <thead>
-            <tr>
-                <th><center>Restaurants:</center></th>
-                <th><center>Cuisine</center></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="restaurant: ${restaurant}" style="border: 1px black">
-                <td th:text="${restaurant.name}"></td>
-                <td th:text="${restaurant.cuisine}"></td>
 
-            </tr>
-            </tbody>
-        </table>-->
     </div>
+
+<div>
+    <div class="contact-info" style="text-align: center">
+        <p><strong>Phone:</strong></p>
+        <a th:href="|tel:${restaurant.phoneNumber}|" th:text="${restaurant.phoneNumber}"/>
+    </div>
+</div>
+
+
+<div>
+    <div class="contact-info" style="text-align: center">
+        <p><strong>E-mail Adress</strong></p>
+        <a th:href="|mailto:${restaurant.email}|" th:text="${restaurant.email}"></a>
+    </div>
+</div>
 
     <h1><center>MENU</center></h1>
     <div class="container">

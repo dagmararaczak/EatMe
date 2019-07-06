@@ -1,4 +1,4 @@
-insert into RESTAURANT(name) values('VAFANAPOLI');
+insert into RESTAURANT(name,phone_number,email) values('VAFANAPOLI','696-331-424','dagmararaczak@gmail.com');
 insert into RESTAURANT(name) values('PASIBUS');
 insert into MENU(restaurant_id) values (1);
 insert into MENU(restaurant_id) values (2);
