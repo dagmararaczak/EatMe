@@ -1,23 +1,24 @@
 package com.eatMe.services;
 
-
-import com.eatMe.entities.Cuisine;
-import com.eatMe.entities.MealType;
+import com.eatMe.entities.Meal;
+import com.eatMe.entities.Menu;
 import com.eatMe.entities.Restaurant;
+import com.eatMe.repositories.MealRepository;
+import com.eatMe.repositories.MenuRepository;
 import com.eatMe.repositories.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class RestaurantService {
 
     @Autowired
     RestaurantRepository restaurantRepository;
+
+    @Autowired
+    MenuRepository menuRepository;
 
 
     public List<Restaurant> getByCuisineType(String cuisineName) {
@@ -26,28 +27,28 @@ public class RestaurantService {
     }
 
 
-    public List<Restaurant> findByName(String name){
+    public List<Restaurant> findByName(String name) {
 
-       return restaurantRepository.findByName(name);
+        return restaurantRepository.findByName(name);
     }
 
 
-    public List<Restaurant> getAll(){
+    public List<Restaurant> getAll() {
         return restaurantRepository.getAll();
     }
 
-    public Restaurant getById(Long id){
+    public Restaurant getById(Long id) {
         return restaurantRepository.getById(id);
     }
 
 
-    public Set<Restaurant> getByCuisineAndMeal(List<String> cuisine,List<String> meal){
+    public Set<Restaurant> getByCuisineAndMeal(List<String> cuisine, List<String> meal) {
 
         Set<Restaurant> resultRestaurants = new HashSet<>();
         Set<Restaurant> restaurantsByCuisine = new HashSet<>();
         Set<Restaurant> restaurantsByMeal = new HashSet<>();
 
-        if(cuisine.isEmpty()){
+        if (cuisine.isEmpty()) {
 
 
             for (String mealName : meal) {
@@ -59,7 +60,7 @@ public class RestaurantService {
 
             return restaurantsByMeal;
 
-        } else if(meal.isEmpty()){
+        } else if (meal.isEmpty()) {
 
             for (String cuisineName : cuisine) {
 
@@ -71,7 +72,7 @@ public class RestaurantService {
 
             return restaurantsByCuisine;
 
-        } else{
+        } else {
 
             for (String cuisineName : cuisine) {
 
@@ -91,7 +92,7 @@ public class RestaurantService {
 
             for (Restaurant restaurant : restaurantsByCuisine) {
 
-                if(restaurantsByMeal.contains(restaurant)){
+                if (restaurantsByMeal.contains(restaurant)) {
                     resultRestaurants.add(restaurant);
                 }
             }
@@ -99,13 +100,59 @@ public class RestaurantService {
         }
 
 
-        /*resultRestaurants.addAll(restaurantsByCuisine);
-        resultRestaurants.addAll(restaurantsByMeal);*/
-
         return resultRestaurants;
 
     }
 
 
+     public List<Restaurant> getByMinCost(Double mealCost){
+
+         List<Restaurant> restaurantWithMinCost = new ArrayList<>();
+
+         List<Restaurant> allRestaurant = restaurantRepository.getAll();
+
+         for (Restaurant restaurant : allRestaurant) {
+
+             Menu menu = menuRepository.getByRestaurantId(restaurant.getId());
+
+             List<Meal> mealList = menuRepository.getMealList(menu.getId());
+
+             Meal min = Collections.min(mealList, Comparator.comparing(Meal::getPrice));
+
+
+             if(mealCost<= min.getPrice()){
+                 restaurantWithMinCost.add(restaurant);
+             }
+
+         }
+
+         return restaurantWithMinCost;
+
+     }
+
+    public List<Restaurant> getByMaxCost(Double mealCost){
+
+        List<Restaurant> restaurantWithMinCost = new ArrayList<>();
+
+        List<Restaurant> allRestaurant = restaurantRepository.getAll();
+
+        for (Restaurant restaurant : allRestaurant) {
+
+            Menu menu = menuRepository.getByRestaurantId(restaurant.getId());
+
+            List<Meal> mealList = menuRepository.getMealList(menu.getId());
+
+            Meal max = Collections.max(mealList, Comparator.comparing(Meal::getPrice));
+
+
+            if(mealCost<= max.getPrice()){
+                restaurantWithMinCost.add(restaurant);
+            }
+
+        }
+
+        return restaurantWithMinCost;
+
+    }
 }
 

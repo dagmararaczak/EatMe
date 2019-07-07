@@ -19,7 +19,7 @@
                <p style="font-size: large">Search for Restaurant </p> <br><br>
                 <label for="queryString"><p>Cuisine</p></label>
                 <br>
-                <select th:field="${queryString.cuisinelist}" multiple="multiple"  id="queryString" style="width: 80%">
+                <select class="db-select md-form" th:field="${queryString.cuisinelist}" multiple="multiple"  id="queryString" style="width: 80%">
                     <option th:value="ITALIAN">ITALIAN</option>
                     <option th:value="GREEK">GREEK</option>
                     <option th:value="CHINESE">CHINESE</option>
@@ -27,6 +27,7 @@
                     <option th:value="POLAND">POLAND</option>
                     <option th:value="AMERICAN">AMERICAN</option>
                 </select>
+
 
                <!-- <input th:type="checkbox" th:field="${queryString.cuisinelist}"  th:value="ITALIAN" th:text="ITALIAN" />-->
                 </div>
