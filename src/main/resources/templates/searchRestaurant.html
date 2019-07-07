@@ -9,15 +9,15 @@
 </head>
 <body>
 <div th:insert="fragments :: mainNavbar"></div>
-<div class="jumbotron text-center" style="background-color: cornflowerblue">
-    <h1 style="font-family: fantasy" > Search </h1>
+<div class="jumbotron text-center" style="background-image: url('img/food3.jpg')">
+    <h1 style="font-family: fantasy;color: beige" > Search </h1>
 
     <div class="container">
         <form action="#" th:action="@{/search-restaurant}" th:object="${queryString}" method="post" >
 
             <div class="form-group">
-               <p style="font-size: large">Search for Restaurant </p> <br><br>
-                <label for="queryString"><p>Cuisine</p></label>
+               <p style="font-size: large;color: beige">Search for Restaurant </p> <br><br>
+                <label for="queryString"><p style="color: beige"><bold>Cuisine</bold></p></label>
                 <br>
                 <select class="db-select md-form" th:field="${queryString.cuisinelist}" multiple="multiple"  id="queryString" style="width: 80%">
                     <option th:value="ITALIAN">ITALIAN</option>
@@ -33,7 +33,7 @@
                 </div>
                 <br>
             <div class="form-group" >
-                <label for="meal"><p>Meal</p></label>
+                <label for="meal" ><p style="color: beige">Meal</p></label>
                 <br>
                 <select  th:field="${queryString.meallist}" multiple  id="meal" style="width: 80%">
                     <option th:value="VEGETARIAN">VEGETARIAN</option>
@@ -44,7 +44,7 @@
         </div>
 
             <div class="form-group">
-                <label for="max"><p>Max cost of one meal</p></label>
+                <label for="max"><p style="color: beige">Max cost of one meal</p></label>
                 <br>
                 <input type="text" th:field="${queryString.max}" id="max">
             </div>
