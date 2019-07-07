@@ -112,6 +112,10 @@ public class RestaurantService {
 
         List<Restaurant> allRestaurant = restaurantRepository.getAll();
 
+        if(mealCost == null){
+            return restaurantWithMinCost;
+        }
+
         for (Restaurant restaurant : allRestaurant) {
 
             Menu menu = menuRepository.getByRestaurantId(restaurant.getId());
@@ -145,7 +149,7 @@ public class RestaurantService {
             restaurants.addAll(byCosts);
 
             return restaurants;
-        } else if (byCosts.isEmpty()) {
+        } else if (max == null | byCosts.isEmpty()) {
 
             restaurants.addAll(byCuisineAndMeal);
 
