@@ -65,9 +65,12 @@ public class RestaurantController {
     @PostMapping("search-restaurant")
     public String search(@ModelAttribute("queryString") QueryString queryString, Model model){
 
-        Set<Restaurant> restaurants = restaurantService.getByCuisineAndMeal(queryString.cuisinelist, queryString.meallist);
+       // Set<Restaurant> restaurants = restaurantService.getByCuisineAndMeal(queryString.cuisinelist, queryString.meallist);
 
-       model.addAttribute("restaurants",restaurants);
+        Set<Restaurant> restaurants = restaurantService.getByCriteria
+                (queryString.cuisinelist, queryString.meallist, queryString.max);
+
+        model.addAttribute("restaurants",restaurants);
 
 
         return "allRestaurants";

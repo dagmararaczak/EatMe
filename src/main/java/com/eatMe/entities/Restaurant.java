@@ -23,11 +23,6 @@ public class Restaurant {
     @OneToOne(mappedBy = "restaurant")
     private Adres adres;
 
-    @Column(nullable = true)
-    private Double maxCost;
-    @Column(nullable = true)
-    private Double minCost;
-
     @ElementCollection(targetClass = MealType.class,fetch = FetchType.EAGER)
     @CollectionTable(name = "restaurant_meal", joinColumns = @JoinColumn(name = "restaurant_id"))
     @Column(name = "meal_type", nullable = true)
@@ -59,23 +54,6 @@ public class Restaurant {
     public Long getId() {
         return Id;
     }
-
-    public Double getMaxCost() {
-        return maxCost;
-    }
-
-    public void setMaxCost(Double maxCost) {
-        this.maxCost = maxCost;
-    }
-
-    public Double getMinCost() {
-        return minCost;
-    }
-
-    public void setMinCost(Double minCost) {
-        this.minCost = minCost;
-    }
-
 
     public Set<Cuisine> getCuisine() {
         return cuisine;

@@ -666,6 +666,7 @@ insert into restaurant_cuisine(restaurant_id, cuisine) VALUES (6,'POLAND');
 insert into restaurant_cuisine(restaurant_id, cuisine) VALUES (7,'GREEK');
 insert into restaurant_cuisine(restaurant_id, cuisine) VALUES (8,'CHINESE');
 insert into restaurant_cuisine(restaurant_id, cuisine) VALUES (9,'AMERICAN');
+insert into restaurant_cuisine(restaurant_id, cuisine) VALUES (10,'GEORIAN');
 
 insert into RESTAURANT_MEAL(restaurant_id, MEAL_TYPE) VALUES (1,'VEGETARIAN');
 insert into RESTAURANT_MEAL(restaurant_id, MEAL_TYPE) VALUES (1,'MEAT');
