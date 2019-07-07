@@ -105,6 +105,26 @@ public class RestaurantController {
 
         String meal;
 
+        Double min;
+
+        Double max;
+
+        public Double getMin() {
+            return min;
+        }
+
+        public void setMin(Double min) {
+            this.min = min;
+        }
+
+        public Double getMax() {
+            return max;
+        }
+
+        public void setMax(Double max) {
+            this.max = max;
+        }
+
         List<String> cuisinelist = new ArrayList<>();
         List<String> meallist = new ArrayList<>();
 
