@@ -20,8 +20,8 @@ insert into MENU(restaurant_id) values (8);
 insert into MENU(restaurant_id) values (9);
 insert into MENU(restaurant_id) values (10);
 
-insert into MEAL(name,PRICE,MENU_ID) values('CEZAR Z KURCZAKIEM',21.5,1);
-insert into MEAL(name,PRICE,MENU_ID) values('PIERŚ Z KACZKI',35.0,1);
+insert into MEAL(name,PRICE,MENU_ID) values('CEZAR Z KURCZAKIEM',21.50,1);
+insert into MEAL(name,PRICE,MENU_ID) values('PIERŚ Z KACZKI',35.00,1);
 insert into MEAL(name,PRICE,MENU_ID) values('CHRUPIĄCY KURCZAK',22.99,1);
 insert into MEAL(name,PRICE,MENU_ID) values('STEK Z ANTRYKOTU',45.99,1);
 insert into MEAL(name,PRICE,MENU_ID) values('SCHAB Z DZIKA',39.99,1);
@@ -128,7 +128,7 @@ insert into MEAL(name,PRICE,MENU_ID) values('LULAKEBAB',36.00,10);
 insert into MEAL(name,PRICE,MENU_ID) values('NEKNEBI',38.00,10);
 insert into MEAL(name,PRICE,MENU_ID) values('ADŻEPSANDALI',29.00,10);
 insert into MEAL(name,PRICE,MENU_ID) values('SAŁATKA GRUZIŃSKA',28.00,10);
-insert into MEAL(name,PRICE,MENU_ID) values('COMBERKI Z JAGNIĘCINY',56,10);
+insert into MEAL(name,PRICE,MENU_ID) values('COMBERKI Z JAGNIĘCINY',56.00,10);
 
 insert into Ingredients(name,MEAL_ID) values('czosnek',1);
 insert into Ingredients(name,MEAL_ID) values('czosnek',2);
